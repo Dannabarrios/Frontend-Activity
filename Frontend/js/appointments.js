@@ -106,3 +106,7 @@ function showAlert(msg, type) {
     alert.style.display = 'block';
     setTimeout(() => alert.style.display = 'none', 3000);
 }
+
+
+
+
