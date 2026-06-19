@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas - Hospital System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand"> Hospital System</div>
+        <ul class="navbar-menu">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="patients.html">Pacientes</a></li>
+            <li><a href="doctors.html">Médicos</a></li>
+            <li><a href="appointments.html">Citas</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title"> Gestión de Citas</h1>
+
+        <div id="alert" class="alert"></div>
+
+        <div class="form-card">
+            <h2 id="form-title">Nueva Cita</h2>
+            <input type="hidden" id="appointment-id">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Paciente</label>
+                    <select id="patient-id"></select>
+                </div>
+                <div class="form-group">
+                    <label>Médico</label>
+                    <select id="doctor-id"></select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Fecha y Hora</label>
+                    <input type="datetime-local" id="appointmentDate">
+                </div>
+                <div class="form-group">
+                    <label>Estado</label>
+                    <select id="status">
+                        <option value="SCHEDULED">SCHEDULED</option>
+                        <option value="COMPLETED">COMPLETED</option>
+                        <option value="CANCELLED">CANCELLED</option>
+                    </select>
+                </div>
+            </div>
+            <div style="display:flex; gap:1rem; margin-top:1rem">
+                <button class="btn btn-primary" onclick="saveAppointment()"> Guardar</button>
+                <button class="btn btn-warning" onclick="clearForm()"> Limpiar</button>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <h2>Lista de Citas</h2>
+            <div class="search-bar">
+                <input type="text" id="search-id" placeholder="Buscar por ID...">
+                <button class="btn btn-primary" onclick="findById()"> Buscar</button>
+                <button class="btn btn-success" onclick="loadAppointments()"> Ver todos</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Médico</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="appointments-table"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/appointments.js"></script>
+</body>
+</html>
+
+
+
